@@ -153,7 +153,7 @@ void APP_Tasks ( void )
             // Initialisation de l'adc
             BSP_InitADC10();  
             
-           OnLeds();    // Allume toutes les leds
+            OnLeds();    // Allume toutes les leds
             
             // Start le timer
             DRV_TMR0_Start();
@@ -170,6 +170,7 @@ void APP_Tasks ( void )
         
         case APP_STATE_SERVICE_TASKS:
         {
+            static uint8_t i = 0;
             // Lecture des ADC
             appData.AdcRes = BSP_ReadAllADC(); 
             
@@ -177,8 +178,11 @@ void APP_Tasks ( void )
             lcd_gotoxy(1,3);
             printf_lcd("Ch0 %4d Ch1 %4d", appData.AdcRes.Chan0, appData.AdcRes.Chan1);
             
-            ClearLeds();    // Éteindre toutes les leds
-            
+            if(i == 0)
+            {
+                ClearLeds();    // Éteindre toutes les leds
+                i++;
+            }
             Chenillard();   // Fonction du chenillard
             
             // Passer à l'état wait
@@ -213,41 +217,49 @@ void Chenillard (void)
     {
         case 0:
         {
+            BSP_LEDOff(BSP_LED_7);
             BSP_LEDOn(BSP_LED_0);
             break;
         }
         case 1:
         {
+            BSP_LEDOff(BSP_LED_0);
             BSP_LEDOn(BSP_LED_1);
             break;
         }
         case 2:
         {
+            BSP_LEDOff(BSP_LED_1);
             BSP_LEDOn(BSP_LED_2);
             break;
         }
         case 3:
         {
+            BSP_LEDOff(BSP_LED_2);
             BSP_LEDOn(BSP_LED_3);
             break;
         }
         case 4:
         {
+            BSP_LEDOff(BSP_LED_3);
             BSP_LEDOn(BSP_LED_4);
             break;
         }
         case 5:
         {
+            BSP_LEDOff(BSP_LED_4);
             BSP_LEDOn(BSP_LED_5);
             break;
         }
         case 6:
         {
+            BSP_LEDOff(BSP_LED_5);
             BSP_LEDOn(BSP_LED_6);
             break;
         }
         case 7:
         {
+            BSP_LEDOff(BSP_LED_6);
             BSP_LEDOn(BSP_LED_7);
             break;
         }
