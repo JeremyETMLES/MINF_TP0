@@ -75,12 +75,14 @@ void __ISR(_TIMER_1_VECTOR, ipl1AUTO) IntHandlerDrvTmrInstance0(void)
 {
     static uint8_t i = 0;
     
+    // Ne rien faire pendant 3s
     if(i<30)
     {
         i++;
     }
     else
     {
+        // Passer à l'état service tasks
         APP_UpdateState(APP_STATE_SERVICE_TASKS);
     }
     

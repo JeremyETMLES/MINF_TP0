@@ -164,7 +164,7 @@ void APP_Tasks ( void )
         
         case APP_STATE_WAIT:
         {
-            
+           // Ne rien faire 
             break;
         }
         
@@ -176,13 +176,16 @@ void APP_Tasks ( void )
             
             // Aller à la troisième ligne et afficher les valeurs d'ADC
             lcd_gotoxy(1,3);
+            // Afficher les valeurs ADC
             printf_lcd("Ch0 %4d Ch1 %4d", appData.AdcRes.Chan0, appData.AdcRes.Chan1);
             
             if(i == 0)
             {
-                ClearLeds();    // Éteindre toutes les leds
+                // Éteindre toutes les leds la première fois
+                ClearLeds();
                 i++;
             }
+            
             Chenillard();   // Fonction du chenillard
             
             // Passer à l'état wait
