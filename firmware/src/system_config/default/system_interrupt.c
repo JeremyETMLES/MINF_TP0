@@ -60,7 +60,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 
 #include "system/common/sys_common.h"
-#include "app.h"
+#include "app.h"    // Import de la mise à jour de l'état et constantes
 #include "system_definitions.h"
 
 // *****************************************************************************
@@ -76,7 +76,7 @@ void __ISR(_TIMER_1_VECTOR, ipl1AUTO) IntHandlerDrvTmrInstance0(void)
     static uint8_t i = 0;
     
     // Ne rien faire pendant 3s
-    if(i<30)
+    if(i < TEMPS_3S)
     {
         i++;
     }

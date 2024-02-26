@@ -52,14 +52,12 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stdint.h>
-#include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include "system_config.h"
 #include "system_definitions.h"
 
-#include "C:\microchip\harmony\v2_06\bsp\pic32mx_skes\Mc32DriverAdc.h"
+#include "C:\microchip\harmony\v2_06\bsp\pic32mx_skes\Mc32DriverAdc.h"  // Structure adc
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -72,6 +70,8 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 // Section: Type Definitions
+    
+#define TEMPS_3S 30
 // *****************************************************************************
 // *****************************************************************************
 
@@ -200,13 +200,13 @@ void APP_Initialize ( void );
     This routine must be called from SYS_Tasks() routine.
  */
 
-void APP_Tasks( void );
+void APP_Tasks( void ); // Boucle des tâches principales 
 
-void APP_UpdateState(APP_STATES NewState);
+void APP_UpdateState(APP_STATES NewState);  //Mise a jour de l'état du système
 
-void Chenillard (void);
-void ClearLeds(void);
-void OnLeds(void);
+void Chenillard (void); // Fonction faissant le chenillard
+void ClearLeds(void);   // Éteint toutes les leds
+void OnLeds(void);      // Allume toutes les leds
 
 #endif /* _APP_H */
 

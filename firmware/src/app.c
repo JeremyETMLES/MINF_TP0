@@ -53,6 +53,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
+#include <stdint.h>
 #include "app.h"
 #include "Mc32DriverLcd.h"
 #include "Mc32DriverAdc.h"
@@ -137,6 +138,8 @@ void APP_Initialize ( void )
 
 void APP_Tasks ( void )
 {
+    static uint8_t i = 0;
+    
     /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -170,7 +173,6 @@ void APP_Tasks ( void )
         
         case APP_STATE_SERVICE_TASKS:
         {
-            static uint8_t i = 0;
             // Lecture des ADC
             appData.AdcRes = BSP_ReadAllADC(); 
             
